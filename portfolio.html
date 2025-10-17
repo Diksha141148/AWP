@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="portfolioApp">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio — Diksha Bajarang Natake</title>
+  <link rel="stylesheet" href="style.css"/>
+  <!-- AngularJS CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+
+  <!-- Header Section -->
+  <header>
+    <nav>
+      <h1 class="logo">MyPortfolio</h1>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Hello, I'm <span>{{name}}</span></h2>
+      <p>
+        I am studying at Pimpri-Chinchwad University, Mohitewadi.<br>
+        Currently pursuing B.Tech in Computer Science Engineering.
+      </p>
+      <a href="#projects" class="btn">View My Certificates</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+      <h3>I am <b>{{name}}</b>, currently studying in Pimpri-Chinchwad University, Mohitewadi,
+      pursuing B.Tech in Computer Science Engineering (Third Year). I aim to build a successful career
+      in the Software Industry.</h3>
+    </p>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <h2>My Certificates</h2>
+    <div class="project-grid">
+      <div class="project-card" ng-repeat="p in certificates">
+        <embed ng-src="{{p.file}}" type="application/pdf" width="100%" height="250px">
+        <h3>{{p.title}}</h3>
+        <p><b>{{p.description}}</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <form ng-submit="saveContact()">
+      <label>Name:</label>
+      <input type="text" ng-model="contact.name" required>
+      <label>Email:</label>
+      <input type="email" ng-model="contact.email" required>
+      <label>Message:</label>
+      <textarea ng-model="contact.message" rows="4" required></textarea>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+
+    <h3>Stored Contact Data </h3>
+    <div class="stored-data" ng-if="savedContacts.length > 0">
+      <div class="card" ng-repeat="data in savedContacts">
+        <p><b>Name:</b> {{data.name}}</p>
+        <p><b>Email:</b> {{data.email}}</p>
+        <p><b>Message:</b> {{data.message}}</p>
+      </div>
+    </div>
+    <p ng-if="savedContacts.length === 0">No data saved yet.</p>
+
+    <p>Email: <a href="mailto:diksha.natake24@pcu.edu.in">diksha.natake24@pcu.edu.in</a></p>
+    <p>LinkedIn: <a href="#" target="_blank">linkedin.com/in/dikshanatake</a></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 {{name}}. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="diksh.js"></script>
+</body>
+</html>
